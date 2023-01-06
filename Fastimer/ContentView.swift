@@ -8,6 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var fastingManager = FastingManager()
+    
+    var title: String {
+        switch fastingManager.fastingState {
+        case .notStarted:
+            return "Let's get started!"
+        case .fasting:
+            return "You are now fasting"
+        case .feeding:
+            return "You are now feeding"
+        }
+    }
     var body: some View {
         ZStack {
             //MARK: Background
@@ -42,7 +54,7 @@ struct ContentView: View {
                 HStack(spacing: 60) {
                     //MARK: Start Time
                     VStack(spacing: 5) {
-                        Text("Start")
+                        Text(fastingManager.fastingState == .notStarted ? "Start" : "Started")
                             .opacity(0.7)
                         Text(Date(), format: .dateTime.weekday().hour().minute().second())
                             .fontWeight(.bold)
@@ -50,7 +62,7 @@ struct ContentView: View {
                     
                     //MARK: End Time
                     VStack(spacing: 5) {
-                        Text("End")
+                        Text(fastingManager.fastingState == .notStarted ? "End" : "Ends")
                             .opacity(0.7)
                         Text(Date().addingTimeInterval(16), format: .dateTime.weekday().hour().minute().second())
                             .fontWeight(.bold)
@@ -58,9 +70,9 @@ struct ContentView: View {
                 }
                 //MARK: Button
                 Button {
-                    
+                    fastingManager.toggleFastingState()
                 } label: {
-                    Text("Start Fasting")
+                    Text(fastingManager.fastingState == .fasting ? "End fast" : "Start fasting")
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.horizontal,24)
@@ -68,7 +80,7 @@ struct ContentView: View {
                         .background(.thinMaterial)
                         .cornerRadius(20)
                 }
-
+                
             }
             .padding()
             
@@ -76,6 +88,7 @@ struct ContentView: View {
         .foregroundColor(.white)
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

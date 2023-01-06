@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9024DE9B2968DBC80087C12F /* FastingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024DE9A2968DBC80087C12F /* FastingManager.swift */; };
 		90B7B370296794010018BA8B /* FastimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B7B36F296794010018BA8B /* FastimerApp.swift */; };
 		90B7B372296794010018BA8B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B7B371296794010018BA8B /* ContentView.swift */; };
 		90B7B374296794020018BA8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90B7B373296794020018BA8B /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9024DE9A2968DBC80087C12F /* FastingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingManager.swift; sourceTree = "<group>"; };
 		90B7B36C296794010018BA8B /* Fastimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fastimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B7B36F296794010018BA8B /* FastimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastimerApp.swift; sourceTree = "<group>"; };
 		90B7B371296794010018BA8B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				90B7B36F296794010018BA8B /* FastimerApp.swift */,
 				90B7B371296794010018BA8B /* ContentView.swift */,
+				9024DE9A2968DBC80087C12F /* FastingManager.swift */,
 				90B7B39A296794CA0018BA8B /* ProgressRing.swift */,
 				90B7B373296794020018BA8B /* Assets.xcassets */,
 				90B7B375296794020018BA8B /* Fastimer.entitlements */,
@@ -264,6 +267,7 @@
 			files = (
 				90B7B372296794010018BA8B /* ContentView.swift in Sources */,
 				90B7B370296794010018BA8B /* FastimerApp.swift in Sources */,
+				9024DE9B2968DBC80087C12F /* FastingManager.swift in Sources */,
 				90B7B39B296794CB0018BA8B /* ProgressRing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
