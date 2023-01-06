@@ -14,6 +14,7 @@
 		90B7B382296794020018BA8B /* FastimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B7B381296794020018BA8B /* FastimerTests.swift */; };
 		90B7B38C296794020018BA8B /* FastimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B7B38B296794020018BA8B /* FastimerUITests.swift */; };
 		90B7B38E296794020018BA8B /* FastimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B7B38D296794020018BA8B /* FastimerUITestsLaunchTests.swift */; };
+		90B7B39B296794CB0018BA8B /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B7B39A296794CA0018BA8B /* ProgressRing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		90B7B387296794020018BA8B /* FastimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B7B38B296794020018BA8B /* FastimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastimerUITests.swift; sourceTree = "<group>"; };
 		90B7B38D296794020018BA8B /* FastimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		90B7B39A296794CA0018BA8B /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				90B7B36F296794010018BA8B /* FastimerApp.swift */,
 				90B7B371296794010018BA8B /* ContentView.swift */,
+				90B7B39A296794CA0018BA8B /* ProgressRing.swift */,
 				90B7B373296794020018BA8B /* Assets.xcassets */,
 				90B7B375296794020018BA8B /* Fastimer.entitlements */,
 				90B7B376296794020018BA8B /* Preview Content */,
@@ -261,6 +264,7 @@
 			files = (
 				90B7B372296794010018BA8B /* ContentView.swift in Sources */,
 				90B7B370296794010018BA8B /* FastimerApp.swift in Sources */,
+				90B7B39B296794CB0018BA8B /* ProgressRing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
