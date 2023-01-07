@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct ProgressRing: View {
-    @State var progress = 0.5
+    @EnvironmentObject var fastingManager: FastingManager
+    
+    let timer = Timer
+        .publish(every: 1, on: .main, in: .common)
+        .autoconnect()
+    
     var body: some View {
         ZStack {
             //MARK: Placeholder ring
@@ -19,34 +24,51 @@ struct ProgressRing: View {
             
             //MARK: Colored Ring
             Circle()
-                .trim(from: 0.0,to: min(progress,1.0))
+                .trim(from: 0.0,to: min(fastingManager.progress,1.0))
                 .stroke(AngularGradient(gradient: Gradient(colors: [Color.blue,Color.pink,Color.pink,Color.cyan,Color.blue]), center: .center),style: StrokeStyle(lineWidth: 15.0,lineCap: .round,lineJoin: .round))
                 .rotationEffect(Angle(degrees: 270))
-                .animation(.easeInOut(duration: 1.0), value: progress)
+                .animation(.easeInOut(duration: 1.0), value: fastingManager.progress)
             
             VStack(spacing: 30) {
-                //MARK: Elapsed time
-                VStack(spacing: 5) {
-                    Text("Elapsed time")
-                        .opacity(0.7)
-                    Text("0:00")
-                        .font(.title)
-                        .fontWeight(.bold)
+                if fastingManager.fastingState != .notStarted {
+                    //MARK: UPCOMMING FAST
+                    VStack(spacing: 5) {
+                        Text("Upcoming fast")
+                            .opacity(0.7)
+                        Text("\(fastingManager.fastingPlan.fastingPeriod.formatted()) Hours")
+                            .font(.title)
+                            .fontWeight(.bold)
+                    }
+                }else {
+                    //MARK: Elapsed time
+                    VStack(spacing: 5) {
+                        Text("Elapsed time (\(fastingManager.progress.formatted(.percent)))")
+                            .opacity(0.7)
+                        Text(fastingManager.startTime,style: .timer)
+                            .font(.title)
+                            .fontWeight(.bold)
+                    }
+                    .padding(.top)
+                    VStack(spacing: 5) {
+                        if !fastingManager.elapsed {
+                            Text("Remaining time (\((1 - fastingManager.progress).formatted(.percent)))")
+                                .opacity(0.7)
+                        }else{
+                            Text("Extra time")
+                                .opacity(0.7)
+                        }
+                        Text(fastingManager.endTime,style: .timer)
+                            .font(.title2)
+                            .fontWeight(.bold)
+                    }
                 }
-                .padding(.top)
-                VStack(spacing: 5) {
-                    Text("Remaining time")
-                        .opacity(0.7)
-                    Text("0:00")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                }
+                
             }
         }
         .frame(width: 250,height: 250)
         .padding()
-        .onAppear {
-            progress = 1
+        .onReceive(timer) { _ in
+            fastingManager.track()
         }
     }
 }
@@ -54,5 +76,6 @@ struct ProgressRing: View {
 struct ProgressRing_Previews: PreviewProvider {
     static var previews: some View {
         ProgressRing()
+            .environmentObject(FastingManager())
     }
 }

@@ -37,7 +37,7 @@ struct ContentView: View {
                     .foregroundColor(.blue)
                 
                 //MARK: Fasting plan
-                Text("16:8")
+                Text(fastingManager.fastingPlan.rawValue)
                     .fontWeight(.semibold)
                     .padding(.horizontal,24)
                     .padding(.vertical,8)
@@ -50,13 +50,14 @@ struct ContentView: View {
             VStack(spacing:40) {
                 //MARK: Progress ring
                 ProgressRing()
+                    .environmentObject(fastingManager)
                 
                 HStack(spacing: 60) {
                     //MARK: Start Time
                     VStack(spacing: 5) {
                         Text(fastingManager.fastingState == .notStarted ? "Start" : "Started")
                             .opacity(0.7)
-                        Text(Date(), format: .dateTime.weekday().hour().minute().second())
+                        Text(fastingManager.startTime, format: .dateTime.weekday().hour().minute().second())
                             .fontWeight(.bold)
                     }
                     
@@ -64,7 +65,7 @@ struct ContentView: View {
                     VStack(spacing: 5) {
                         Text(fastingManager.fastingState == .notStarted ? "End" : "Ends")
                             .opacity(0.7)
-                        Text(Date().addingTimeInterval(16), format: .dateTime.weekday().hour().minute().second())
+                        Text(fastingManager.endTime, format: .dateTime.weekday().hour().minute().second())
                             .fontWeight(.bold)
                     }
                 }
